@@ -290,3 +290,65 @@ O `ConsultaController` é responsável por lidar com as requisições relacionad
   - Path: `/exame/all`
   - Parâmetros: Nenhum.
 </details>
+
+## Tecnologias utilizadas e orientações.
+<br>
+A aplicação `clinica_api` utiliza as seguintes tecnologias:
+
+- **Spring Boot**: Framework para desenvolvimento de aplicações Java.
+- **Spring Data JPA**: Biblioteca que facilita o acesso e manipulação de dados em bancos de dados relacionais.
+- **Spring Data REST**: Biblioteca que simplifica a criação de APIs RESTful a partir de repositórios Spring Data.
+- **Jasypt**: Biblioteca para criptografia e descriptografia de dados sensíveis.
+- **Spring JDBC**: Biblioteca para acesso a bancos de dados utilizando JDBC.
+- **Spring Web**: Biblioteca para desenvolvimento de aplicativos web no Spring.
+- **Spring Boot DevTools**: Conjunto de ferramentas de desenvolvimento para agilizar o desenvolvimento de aplicativos Spring Boot.
+- **MariaDB Java Client**: Driver JDBC para conexão com bancos de dados MariaDB.
+- **Lombok**: Biblioteca que facilita a geração automática de código repetitivo, como getters, setters e construtores.
+- **JUnit**: Framework de testes unitários para Java.
+
+### Dependências do Spring Boot
+
+- **spring-boot-starter-data-jpa**
+- **spring-boot-starter-data-rest**
+- **jasypt-spring-boot-starter** (versão 3.0.5)
+- **spring-boot-starter-jdbc**
+- **spring-boot-starter-web**
+- **spring-boot-devtools**
+- **mariadb-java-client**
+- **lombok**
+- **spring-boot-starter-test** (escopo: test)
+
+Certifique-se de verificar se as versões das dependências no arquivo `pom.xml` estão corretas e atualizadas.
+
+## Configuração do Banco de Dados
+
+O banco de dados utilizado pela aplicação é o MariaDB. Certifique-se de ter o MariaDB instalado e configurado corretamente antes de executar a aplicação.
+
+As configurações de conexão com o banco de dados são definidas no arquivo `application.properties` ou `application.yml`.
+
+Exemplo de configuração no arquivo `application.properties` **SEM** o Jasypt:
+
+```properties
+spring.datasource.url=jdbc:mariadb://localhost:3306/nome_do_banco
+spring.datasource.username=usuario
+spring.datasource.password=senha
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+
+# Configurações do Hibernate
+spring.jpa.hibernate.ddl-auto=update
+```
+
+Exemplo de configuração no arquivo `application.properties` **COM** o Jasypt:
+
+```properties
+jasypt.encryptor.iv-generator-classname=org.jasypt.iv.NoIvGenerator
+jasypt.encryptor.algorithm=PBEWithMD5AndTripleDES
+
+# Caso tenha criptografado com alguma chave, insira ela abaixo e descomente a linha.
+# jasypt.encryptor.password=<sua chave de criptografia>
+
+spring.datasource.url=jdbc:mariadb://localhost:3306/nome_do_banco
+spring.datasource.username=usuario
+spring.datasource.password=ENC(NzDSBMwCbrR2JFmM7B7gzA==)
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+```
