@@ -33,7 +33,7 @@ public class MedicoController {
     /*
     Adiciona um novo medico
      */
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<Medico> add(Medico medico){
         Medico novoMedico = medicoService.save(medico);
         return new ResponseEntity<>(novoMedico, HttpStatus.CREATED);
@@ -42,8 +42,8 @@ public class MedicoController {
     /*
     Atualiza um medico
      */
-    @GetMapping("/edit")
-    public ResponseEntity<Medico> update(Medico medico){
+    @PutMapping("/edit")
+    public ResponseEntity<Medico> update(@RequestBody Medico medico){
         Medico medicoAtualizado = medicoService.update(medico);
         return new ResponseEntity<>(medicoAtualizado, HttpStatus.OK);
     }
@@ -51,7 +51,7 @@ public class MedicoController {
     /*
     Deleta um medico pelo id
      */
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         medicoService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);

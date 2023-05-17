@@ -42,7 +42,7 @@ public class PacienteController {
     /*
     Adiciona um novo paciente
      */
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<Paciente> add(@RequestBody Paciente paciente){
         Paciente novoPaciente = pacienteService.save(paciente);
         return new ResponseEntity<>(novoPaciente, HttpStatus.CREATED);
@@ -51,7 +51,7 @@ public class PacienteController {
     /*
     Atualiza um paciente
      */
-    @GetMapping("/edit")
+    @PutMapping("/edit")
     public ResponseEntity<Paciente> update(@RequestBody Paciente paciente){
         Paciente pacienteAtualizado = pacienteService.update(paciente);
         return new ResponseEntity<>(pacienteAtualizado, HttpStatus.OK);
@@ -60,7 +60,7 @@ public class PacienteController {
     /*
     Deleta um paciente pelo id
      */
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         pacienteService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);

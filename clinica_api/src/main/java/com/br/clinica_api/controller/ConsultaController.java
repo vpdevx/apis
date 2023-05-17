@@ -22,19 +22,19 @@ public class ConsultaController {
         return new ResponseEntity<>(consultas, HttpStatus.OK);
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<Consulta> add(Consulta consulta){
         Consulta novaConsulta = consultaService.save(consulta);
         return new ResponseEntity<>(novaConsulta, HttpStatus.CREATED);
     }
 
-    @GetMapping("/edit")
+    @PutMapping("/edit")
     public ResponseEntity<Consulta> update(Consulta consulta){
         Consulta consultaAtualizada = consultaService.update(consulta);
         return new ResponseEntity<>(consultaAtualizada, HttpStatus.OK);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         consultaService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);

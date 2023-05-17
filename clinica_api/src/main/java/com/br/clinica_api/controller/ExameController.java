@@ -17,7 +17,7 @@ public class ExameController {
     /*
         Adiciona um novo exame
      */
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<Exame> add(Exame exame){
         Exame novoExame = exameService.save(exame);
         return new ResponseEntity<>(novoExame, HttpStatus.CREATED);
@@ -26,7 +26,7 @@ public class ExameController {
     /*
         Atualiza um exame
      */
-    @GetMapping("/edit")
+    @PutMapping("/edit")
     public ResponseEntity<Exame> update(Exame exame){
         Exame exameAtualizado = exameService.update(exame);
         return new ResponseEntity<>(exameAtualizado, HttpStatus.OK);
@@ -34,7 +34,7 @@ public class ExameController {
     /*
         Deleta um exame pelo id
      */
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
         exameService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
