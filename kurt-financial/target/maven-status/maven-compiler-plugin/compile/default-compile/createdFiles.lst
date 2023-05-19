@@ -1,0 +1,5 @@
+com/kurtfinancial/model/Bill.class
+com/kurtfinancial/controller/BillController.class
+com/kurtfinancial/repo/BillRepository.class
+com/kurtfinancial/KurtFinancialApplication.class
+com/kurtfinancial/service/BillService.class
