@@ -24,7 +24,7 @@ public class BillController {
         return new ResponseEntity<>(bill, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/all") 
     public ResponseEntity<List<Bill>> getAll() {
         List<Bill> bills = billService.getAll();
         return new ResponseEntity<>(bills, HttpStatus.OK);
