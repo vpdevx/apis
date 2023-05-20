@@ -3,13 +3,13 @@ package com.kurtfinancial.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity @Table(name = "bill")
 @Getter @Setter
 @NoArgsConstructor @ToString
 public class Bill {
-    @Id @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -18,6 +18,5 @@ public class Bill {
     @Column(nullable = false)
     private float value;
 
-    @Column(nullable = false)
     private Date date;
 }
