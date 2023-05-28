@@ -342,7 +342,7 @@ Realiza o login do usuário e retorna um token de sessão.
 ```
 ### Register
 
-**Endpoint**: `/auth/register
+**Endpoint**: `/auth/register`
 
 **Método**: POST
 
